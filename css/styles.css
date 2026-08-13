@@ -55,19 +55,32 @@ h1, h2, h3, h4, .brand-text {
     transition: var(--transition-smooth);
 }
 
+/* CORREGIDO: NO forzar nowrap en todo el .container, porque eso impedía que el
+   menú desplegable (.navbar-collapse) cayera debajo a pantalla completa en móvil.
+   El nowrap solo debe aplicarse al logo+texto de marca, no al navbar entero. */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap; /* mantiene el logo y el texto juntos, sin partirse en dos líneas */
+    min-width: 0; /* clave en flexbox para que pueda encogerse en vez de forzar salto de línea */
+}
+
 .brand-text {
     font-size: 1.3rem;
     color: var(--text-primary);
     letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 .brand-subtext {
     font-size: 0.75rem;
-    font-weight: 400;
+    font-weight: 700; /* CORREGIDO: más grosor para que el neón se note más */
     letter-spacing: 2px;
     color: var(--neon-cyan);
+    text-shadow: 0 0 8px rgba(0, 242, 254, 0.7), 0 0 16px rgba(0, 242, 254, 0.4); /* AÑADIDO: efecto fosforito/glow */
     border-left: 2px solid var(--neon-cyan);
     padding-left: 8px;
+    white-space: nowrap;
 }
 
 .nav-link {
@@ -92,6 +105,44 @@ h1, h2, h3, h4, .brand-text {
         border-radius: 8px;
         margin-top: 10px;
         border: 1px solid var(--border-dark);
+    }
+
+    /* AÑADIDO: logo compacto para que quepa junto al texto y el botón en una sola fila */
+    .navbar-brand img {
+        height: 42px !important;
+        margin-right: 6px !important;
+        flex-shrink: 0;
+    }
+
+    .brand-text {
+        font-size: 0.95rem;
+    }
+
+    /* CORREGIDO: ya no se oculta, se encoge para que quepa junto al resto en una sola fila */
+    .brand-subtext {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+        padding-left: 6px;
+    }
+
+    .navbar-toggler {
+        flex-shrink: 0;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+/* AÑADIDO: aún más compacto en móviles muy estrechos */
+@media (max-width: 375px) {
+    .navbar-brand img {
+        height: 36px !important;
+    }
+    .brand-text {
+        font-size: 0.8rem;
+    }
+    .brand-subtext {
+        font-size: 0.55rem;
+        letter-spacing: 0.5px;
+        padding-left: 4px;
     }
 }
 
