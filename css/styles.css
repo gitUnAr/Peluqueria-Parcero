@@ -1,0 +1,387 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN BASE
+   ========================================================================== */
+:root {
+    --bg-main: #0a0a0a;
+    --bg-card: #141414;
+    --bg-nav: rgba(10, 10, 10, 0.96);
+    --text-primary: #ffffff;
+    --text-muted: #cdcdcd; /* CORREGIDO: Gris mucho más claro y legible para subtítulos */
+    --neon-cyan: #00f2fe;
+    --neon-purple: #4facfe;
+    --border-dark: #222222;
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Evita que el menú fijo tape los títulos al hacer scroll */
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, .brand-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+/* Ajustes de espaciado global */
+.section-padding {
+    padding: 100px 0;
+}
+
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 60px 0;
+    }
+}
+
+/* ==========================================================================
+   2. NAVBAR (NAVEGACIÓN)
+   ========================================================================== */
+.navbar {
+    background-color: var(--bg-nav);
+    border-bottom: 1px solid var(--border-dark);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: var(--transition-smooth);
+}
+
+.brand-text {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+}
+
+.brand-subtext {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--neon-cyan);
+    border-left: 2px solid var(--neon-cyan);
+    padding-left: 8px;
+}
+
+.nav-link {
+    color: #e0e0e0 !important; /* CORREGIDO: Enlaces del menú más claros por defecto */
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.5rem 1.2rem !important;
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover, 
+.nav-link:focus,
+.nav-link.active {
+    color: var(--neon-cyan) !important;
+}
+
+/* Corrección para colapsable en móvil */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: rgba(10, 10, 10, 0.98);
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 10px;
+        border: 1px solid var(--border-dark);
+    }
+}
+
+/* ==========================================================================
+   3. HERO SECTION (INICIO)
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    background: #0d0d0d url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(10,10,10,0.6) 0%, rgba(10,10,10,1) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    width: 100%;
+}
+
+.hero-subtitle {
+    font-size: 0.85rem;
+    color: var(--neon-cyan);
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+}
+
+.hero-title {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin: 20px 0;
+}
+
+.hero-lead {
+    font-size: 1.2rem;
+    color: #e0e0e0; /* CORREGIDO: Texto de introducción con alto contraste */
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 650px;
+}
+
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-lead { font-size: 1rem; }
+    .hero-section { height: calc(100vh - 70px); }
+}
+
+/* ==========================================================================
+   4. BOTONES Y DETALLES DE NEÓN
+   ========================================================================== */
+.btn-neon-lg {
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-cyan));
+    border: none;
+    color: #000000 !important;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+    transition: var(--transition-smooth);
+}
+
+.btn-neon-lg:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 242, 254, 0.6);
+}
+
+.btn-neon-sm {
+    background: transparent;
+    border: 2px solid var(--neon-cyan);
+    color: var(--neon-cyan) !important;
+    border-radius: 50px;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    transition: var(--transition-smooth);
+}
+
+.btn-neon-sm:hover {
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-cyan));
+    color: #000000 !important;
+    border-color: transparent;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+}
+
+.text-neon {
+    background: linear-gradient(45deg, #ffffff, var(--neon-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   5. SECCIÓN SERVICIOS
+   ========================================================================== */
+.section-title {
+    font-size: 2.3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.title-line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-cyan));
+    border-radius: 2px;
+}
+
+.card-custom {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.border-bottom-dark {
+    border-bottom: 1px solid #1f1f1f;
+}
+
+.border-top-dark {
+    border-top: 1px solid #1f1f1f;
+}
+
+.service-item {
+    transition: var(--transition-smooth);
+}
+
+.service-item:hover {
+    padding-left: 10px;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.service-name {
+    font-size: 1.15rem;
+    color: var(--text-primary);
+}
+
+.age-badge {
+    font-size: 0.85rem;
+    color: var(--neon-cyan);
+    font-weight: 600;
+}
+
+.service-price {
+    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* CORREGIDO: Clase genérica de Bootstrap reforzada para máxima legibilidad en fondo oscuro */
+.text-muted {
+    color: var(--text-muted) !important;
+    font-weight: 400 !important;
+}
+
+/* Combo Especial */
+.text-neon-combo {
+    background: linear-gradient(90deg, rgba(79, 254, 234, 0.04) 0%, rgba(0, 0, 0, 0) 100%);
+    border-left: 4px solid var(--neon-cyan);
+    padding-left: 12px;
+}
+
+.text-neon-sub {
+    color: #00f2fe !important; /* CORREGIDO: Cyan brillante con contraste optimizado */
+    font-weight: 500;
+}
+
+.service-price-combo {
+    font-size: 1.45rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+}
+
+/* ==========================================================================
+   6. SECCIÓN GALERÍA
+   ========================================================================== */
+.section-bg-dark {
+    background-color: #101010;
+}
+
+.gallery-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-dark);
+    aspect-ratio: 4 / 5;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gallery-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border: 2px solid var(--neon-cyan);
+    border-radius: 12px;
+}
+
+.gallery-card:hover .gallery-img {
+    transform: scale(1.08);
+}
+
+.gallery-card:hover .gallery-hover {
+    opacity: 1;
+}
+
+.gallery-hover span {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   7. CONTACTO, HORARIOS Y MAPA
+   ========================================================================== */
+.map-container {
+    border: 1px solid var(--border-dark);
+    overflow: hidden;
+    border-radius: 16px;
+    height: 100%;
+    min-height: 400px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(1) invert(0.92) contrast(1.2);
+}
+
+.card-custom text-light {
+    color: #f5f5f5 !important; /* CORREGIDO: Mayor brillo para los días de la semana */
+}
+
+/* CORREGIDO: Garantiza que la dirección de la calle resalte perfectamente */
+.card-custom p.text-muted {
+    color: #e5e5e5 !important;
+}
+
+.ig-btn {
+    border: 1px solid #e1306c;
+    color: #e1306c !important;
+    transition: var(--transition-smooth);
+}
+
+.ig-btn:hover {
+    background-color: #e1306c !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 15px rgba(225, 48, 108, 0.4);
+}
+
+/* ==========================================================================
+   8. FOOTER (PIE DE PÁGINA)
+   ========================================================================== */
+footer {
+    background-color: #050505;
+    border-top: 1px solid var(--border-dark);
+}
+
+.text-muted-dark {
+    color: #777777; /* CORREGIDO: Texto de copyright un punto más claro para mantener la legibilidad */
+    font-size: 0.85rem;
+}
