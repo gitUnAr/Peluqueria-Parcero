@@ -146,6 +146,13 @@ h1, h2, h3, h4, .brand-text {
     }
 }
 
+/* AÑADIDO: por debajo de 306px ya no cabe bien, se oculta "BARBERSHOP" */
+@media (max-width: 306px) {
+    .brand-subtext {
+        display: none;
+    }
+}
+
 /* ==========================================================================
    3. HERO SECTION (INICIO)
    ========================================================================== */
